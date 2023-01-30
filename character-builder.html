@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>D&D Character Builder</title>
@@ -10,30 +10,31 @@
   <fieldset>
     <legend>Base Stats</legend>
     <label for="strength">Strength:</label>
-    <input type="number" id="strength" name="strength" min="3" max="18">
+    <input type="number" id="strength" name="strength" min="6" max="20">
     <br><br>
     <label for="dexterity">Dexterity:</label>
-    <input type="number" id="dexterity" name="dexterity" min="3" max="18">
+    <input type="number" id="dexterity" name="dexterity" min="6" max="20">
     <br><br>
     <label for="constitution">Constitution:</label>
-    <input type="number" id="constitution" name="constitution" min="3" max="18">
+    <input type="number" id="constitution" name="constitution" min="6" max="20">
     <br><br>
     <label for="intelligence">Intelligence:</label>
-    <input type="number" id="intelligence" name="intelligence" min="3" max="18">
+    <input type="number" id="intelligence" name="intelligence" min="6" max="20">
     <br><br>
     <label for="wisdom">Wisdom:</label>
-    <input type="number" id="wisdom" name="wisdom" min="3" max="18">
+    <input type="number" id="wisdom" name="wisdom" min="6" max="20">
     <br><br>
     <label for="charisma">Charisma:</label>
-    <input type="number" id="charisma" name="charisma" min="3" max="18">
+    <input type="number" id="charisma" name="charisma" min="6" max="20">
     <br><br>
   </fieldset>
   <br>
   <fieldset>
-    <legend>Race</legend>
+    <legend>Races</legend>
     <input type="radio" id="dragonborn" name="race" value="dragonborn">
-    <label for="dragonborn
-<input type="radio" id="dwarf" name="race" value="dwarf">
+    <label for="dragonborn">Dragonborn</label>
+    <br>
+    <input type="radio" id="dwarf" name="race" value="dwarf">
     <label for="dwarf">Dwarf</label>
     <br>
     <input type="radio" id="elf" name="race" value="elf">
@@ -166,3 +167,4 @@
         skills += "Nature, Survival";
         break;
     }
+  });
