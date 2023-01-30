@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>D&D Character Builder</title>
+</head>
+<body>
+<h1>D&D Character Builder</h1>
+<form id="character-builder">
+  <fieldset>
+    <legend>Base Stats</legend>
+    <label for="strength">Strength:</label>
+    <input type="number" id="strength" name="strength" min="3" max="18">
+    <br><br>
+    <label for="dexterity">Dexterity:</label>
+    <input type="number" id="dexterity" name="dexterity" min="3" max="18">
+    <br><br>
+    <label for="constitution">Constitution:</label>
+    <input type="number" id="constitution" name="constitution" min="3" max="18">
+    <br><br>
+    <label for="intelligence">Intelligence:</label>
+    <input type="number" id="intelligence" name="intelligence" min="3" max="18">
+    <br><br>
+    <label for="wisdom">Wisdom:</label>
+    <input type="number" id="wisdom" name="wisdom" min="3" max="18">
+    <br><br>
+    <label for="charisma">Charisma:</label>
+    <input type="number" id="charisma" name="charisma" min="3" max="18">
+    <br><br>
+  </fieldset>
+  <br>
+  <fieldset>
+    <legend>Race</legend>
+    <input type="radio" id="dragonborn" name="race" value="dragonborn">
+    <label for="dragonborn
+<input type="radio" id="dwarf" name="race" value="dwarf">
+    <label for="dwarf">Dwarf</label>
+    <br>
+    <input type="radio" id="elf" name="race" value="elf">
+    <label for="elf">Elf</label>
+    <br>
+    <input type="radio" id="gnome" name="race" value="gnome">
+    <label for="gnome">Gnome</label>
+    <br>
+    <input type="radio" id="half-elf" name="race" value="half-elf">
+    <label for="half-elf">Half-Elf</label>
+    <br>
+    <input type="radio" id="halfling" name="race" value="halfling">
+    <label for="halfling">Halfling</label>
+    <br>
+    <input type="radio" id="half-orc" name="race" value="half-orc">
+    <label for="half-orc">Half-Orc</label>
+    <br>
+    <input type="radio" id="human" name="race" value="human">
+    <label for="human">Human</label>
+    <br>
+    <input type="radio" id="tiefling" name="race" value="tiefling">
+    <label for="tiefling">Tiefling</label>
+    <br>
+  </fieldset>
+  <br>
+  <fieldset>
+    <legend>Class</legend>
+    <input type="radio" id="barbarian" name="class" value="barbarian">
+    <label for="barbarian">Barbarian</label>
+    <br>
+    <input type="radio" id="bard" name="class" value="bard">
+    <label for="bard">Bard</label>
+    <br>
+    <input type="radio" id="cleric" name="class" value="cleric">
+    <label for="cleric">Cleric</label>
+    <br>
+    <input type="radio" id="druid" name="class" value="druid">
+    <label for="druid">Druid</label>
+    <br>
+    <input type="radio" id="fighter" name="class" value="fighter">
+    <label for="fighter">Fighter</label>
+    <br>
+    <input type="radio" id="monk" name="class" value="monk">
+    <label for="monk">Monk</label>
+    <br>
+    <input type="radio" id="paladin" name="class" value="paladin">
+    <label for="paladin">Paladin</label>
+    <br>
+    <input type="radio" id="ranger" name="class" value="ranger">
+    <label for="ranger">Ranger</label>
+    <br>
+    <input type="radio" id="rogue" name="class" value="rogue">
+    <label for="rogue">Rogue</label>
+    <br>
+    <input type="radio" id="sorcerer" name="class" value="sorcerer">
+    <label for="sorcerer">Sorcerer</label>
+    <br>
+    <input type="radio" id="warlock" name="class" value="warlock">
+    <label for="warlock">Warlock</label>
+    <br>
+    <input type="radio" id="wizard" name="class" value="wizard">
+    <label for="wizard">Wizard</label>
+    <br>
+  </fieldset>
+  <br>
+  <input type="submit" value="Submit">
+</form>
+<br>
+<div id="output">
+  <p>Character Info:</p>
+  <p id="str-mod"></p>
+  <p id="dex-mod"></p>
+  <p id="con-mod"></p>
+  <p id="int-mod"></p>
+  <p id="wis-mod"></p>
+  <p id="cha-mod"></p>
+  <p id="race-output"></p>
+  <p id="class-output"></p>
+  <p id="skills-output"></p>
+</div>
+</body>
+
+<script>
+  const form = document.querySelector("form");
+  const output = document.querySelector("#output");
+
+  form.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const str = parseInt(form.elements.strength.value);
+    const dex = parseInt(form.elements.dexterity.value);
+    const con = parseInt(form.elements.constitution.value);
+    const int = parseInt(form.elements.intelligence.value);
+    const wis = parseInt(form.elements.wisdom.value);
+    const cha = parseInt(form.elements.charisma.value);
+    const race = form.elements.race.value;
+    const charClass = form.elements.class.value;
+
+    const strMod = Math.floor((str - 10) / 2);
+    const dexMod = Math.floor((dex - 10) / 2);
+    const conMod = Math.floor((con - 10) / 2);
+    const intMod = Math.floor((int - 10) / 2);
+    const wisMod = Math.floor((wis - 10) / 2);
+    const chaMod = Math.floor((cha - 10) / 2);
+
+    let skills = "";
+    switch (charClass) {
+      case "barbarian":
+        skills += "Athletics, Intimidation";
+        break;
+      case "bard":
+        skills += "Insight, Performance";
+        break;
+      case "cleric":
+        skills += "Insight, Religion";
+        break;
+      case "druid":
+        skills += "Nature, Survival";
+        break;
+      case "fighter":
+        skills += "Athletics, Intimidation";
+        break;
+      case "monk":
+        skills += "Acrobatics, Stealth";
+        break;
+      case "paladin":
+        skills += "Athletics, Insight";
+        break;
+      case "ranger":
+        skills += "Nature, Survival";
+        break;
+    }
