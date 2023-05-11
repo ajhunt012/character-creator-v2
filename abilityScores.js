@@ -27,7 +27,7 @@ function processStats(AddRemove, inType, NameEntity, inScoresA, dialogTxt, isSpe
     //this will allow the changes to be set to the total variable//
     for (let s = 0; s < scoresA.length; s++){
         if (AddRemove && maxIsLimitToNow && alsoHasMax && scoresA[s] && alsoHasMax[s]) {
-            //doesnt let it go above the maximum listed
+            //don't let it go above the maximum listed
             /* Only add the bonus up to the maximum listed, or less if possible
 			e.g. the text reads "score increases by 2, to a maximum of 22", thus:
 				- if the score is now 18 or less, add 2 but add no maximum
@@ -56,13 +56,38 @@ function processStats(AddRemove, inType, NameEntity, inScoresA, dialogTxt, isSpe
         }
         if (isSpecial) {
             if (AddRemove) {
-                CurrentStats[isSpecial]
+                CurrentStats[isSpecial][s][NameEntity] = scoresA[s];
+            } else {
+                delete CurrentStats[isSpecial][s][NameEntity];
+            }
+            //------------------------------------This is setting the highest value for override
+            curStat.scores[s]=0;
+            let aMods = [];
+            for (let a in CurrentStats[isSpecial][s]) {
+                let thisStat = CurrentStats[isSpecial][s][a];
+                if (isNaN(thisStat.substring(0,1)) && !isNaN(thisStat.substring(1))){
+                    aMods.push(thisStat);
+                } else if (!isNaN(thisStat) && thisStat > curStat.scores[s]) {
+                    curStat.scores[s] = Number(thisStat);
+                }
+            }
+           if (type === "maximum" && !curStat.scores[s]) curStat.scores[s] =20;
+           if (aMods.length) curStat.scores[s] = processModifiers(curStat.scores[s], aMods);
+        } else {
+            if (AddRemove) {
+                curStat.scores[s] += scoresA[s];
+            } else if (type !== "race") {
+                curStat.scores[s] -= scoresA[s];
             }
         }
-
     }
-
-
+if (saveMaximumsLimited === "save") {
+    if (!CurrentStats.maximumsLimited) CurrentStats.maximumsLimited = {};
+    CurrentStats.maximumsLimited[NameEntity] = alsoHasMax;
+} else if (saveMaximumsLimited === "remove") {
+    delete CurrentStats.maximumsLimited[NameEntity];
+}
+//------------------------------set up a flag if there is no maximum set
 
 
 
