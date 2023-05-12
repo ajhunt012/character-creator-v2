@@ -87,8 +87,26 @@ if (saveMaximumsLimited === "save") {
 } else if (saveMaximumsLimited === "remove") {
     delete CurrentStats.maximumsLimited[NameEntity];
 }
-//------------------------------set up a flag if there is no maximum set
+//------------------------------------------------------------set up a flag if there is no maximum set
 
+    if (alsoHasMax && alsoHasMax.reduce(function(acc, val) { return acc + val; }, 0) === 0) alsoHasMax = false;
+//    sets description text.
+if (AddRemove) {
+    let useDialogTxt = dialogTxt ? dialogTxt : formatLineList("", imprTxtArr);
+    //adds dialog if it doesnt exist yet.
+    if (!CurrentStats.txts[inType][NameEntity] || CurrentStats.txts[inType][NameEntity].indexOf(useDialogTxt) === -1) {
+        CurrentStats.txts[inType][NameEntity] = (!dialogTxt && CurrentStats.txts[inType][NameEntity] ? CurrentStats.txts[inType][NameEntity] + "; " : "") + useDialogTxt;
+    } else if (!dialogTxt && !alsoHasMax && CurrentStats.txts[inType][NameEntity].indexOf(useDialogTxt) !== -1) {
+        // If the entry already exists and contains the exact text that we are about to add, which isn't predetermined, skip it entirely
+        CurrentStats = eval(What("CurrentStats.Stringified"));
+        return;
+    }
+} else {
+    delete CurrentStats.txts[inType][NameEntity];
+    if( type === "background" && !ObjLength(CurrentStats.txt.background) && Number(curStat.scores.join("")) === 0 ){
+        CurrentStats.cols.splice(i, 1);
+    }
+}
 
 
 }
