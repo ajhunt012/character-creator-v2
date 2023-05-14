@@ -107,6 +107,7 @@ if (AddRemove) {
         CurrentStats.cols.splice(i, 1);
     }
 }
+// Store the ability score change for changing the max limit and the score at the same time
 
 
 }
