@@ -189,3 +189,14 @@ function ASround(input) {
     return isNaN(input) ? "0" : Math.round(input).toFixed(0);
 }
 
+//function calculates the point buy values of stats
+function ASCalcPointBuy(theScore) {
+    theScore = parseFloat(theScore.replace(",", "."));
+    if (isNaN(theScore) || theScore <= 8) {
+        let toReturn = 0;
+    } else {
+        let toReturn = theScore - 8;
+        if (theScore > 13) toReturn += theScore - 13;
+    }
+    return toReturn.toFixed(0);
+}
