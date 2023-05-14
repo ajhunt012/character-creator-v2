@@ -124,3 +124,68 @@ else
     CurrentUpdates.types.push("stats" + inType);
 }
 }
+
+// this function initiates the global variable if it hasn't been initiated yet.
+
+function initiateCurrentStats(forceIt) {
+    if (!forceIt) for (let entry in CurrentStats) return; // do nothing if the variable already exists
+    CurrentStats = {
+        "cols" : [{
+            type : 'base',
+            name : "Score Base",
+            scores : [8,8,8,8,8,8,8]
+        }, {
+            type : 'race',
+            name : "Racial Bonus",
+            scores : [0,0,0,0,0,0,0]
+        }, {
+            type : 'feats',
+            name : "Feat Bonus",
+            scores : [0,0,0,0,0,0,0]
+        }, {
+            type : 'classes',
+            name : "Class Bonus",
+            scores : [0,0,0,0,0,0,0]
+        }, {
+            type : 'levels',
+            name : "Level Bonus",
+            scores : [0,0,0,0,0,0,0]
+        }, {
+            type : 'magic',
+            name : "Magic Bonus",
+            scores : [0,0,0,0,0,0,0]
+        }, {
+            type : 'items',
+            name : "Magic Items*",
+            scores : [0,0,0,0,0,0,0]
+        }, {
+            type : 'override',
+            name : "Magical Override",
+            scores : [0,0,0,0,0,0,0]
+        }, {
+            type : 'maximum',
+            name : "Max Total**",
+            scores : [20,20,20,20,20,20,20]
+        }],
+        "txts" : {
+            "classes" : {},
+            "race" : {},
+            "feats" : {},
+            "items" : {},
+            "magic" : {},
+            "background" : {}
+        },
+        "overrides" : [{},{},{},{},{},{},{}],
+        "maximums" :  [{},{},{},{},{},{},{}],
+        "maximumsLinked" : {},
+        "maximumsLimited" : {}
+    }
+    SetStringifieds("stats");
+}
+
+//this function rounds numbers and returns it in a string (no decimals).
+function ASround(input) {
+    input = parseFloat(input.replace(",", "."));
+    return isNaN(input) ? "0" : Math.round(input).toFixed(0);
+}
+
