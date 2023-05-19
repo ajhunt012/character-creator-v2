@@ -200,3 +200,16 @@ function ASCalcPointBuy(theScore) {
     }
     return toReturn.toFixed(0);
 }
+
+//function to call to start and apply ability scores
+function AbilityScores_Button(onlySetToolTip){
+    initiateCurrentStats();
+    let titleTxt = "Ability Scores";
+    let explanatoryTxt = [
+
+    ].jpin ("\n");
+
+
+
+
+}
