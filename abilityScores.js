@@ -207,7 +207,72 @@ function AbilityScores_Button(onlySetToolTip){
     let titleTxt = "Ability Scores";
     let explanatoryTxt = [
 
-    ].jpin ("\n");
+    ].join ("\n");
+    let curHoS = What("HoSRememberState");
+    let asab2 = ["St", "Dx", "Cn", "In", "Ws", "Ch", "HS"];
+    let asab3 = ["Str", "Dex", "Con", "Int", "Wis", "Cha", "HoS"];
+
+//    text descriptions go here
+
+    let sections = {
+        ref : {
+            title : "Primary class abilities \u0026 Multiclassing prerequisites",
+            loc : "left",
+            txt : ""
+        },
+        race : {
+            title : "Racial ability score improvements",
+            loc : "right",
+            txt : ""
+        },
+        asi : {
+            title : "Class levels ability score improvements",
+            loc : "left",
+            txt : ""
+        },
+        classes : {
+            title : "Class Features ability score improvements",
+            loc : "right",
+            txt : ""
+        },
+        feats : {
+            title : "Feat ability score improvements",
+            loc : "right",
+            txt : ""
+        },
+        items : {
+            title : "Magic Item ability score boosts",
+            loc : "left",
+            txt : ""
+        },
+        magic : {
+            title : "Other magic ability score boosts",
+            loc : "right",
+            txt : ""
+        },
+        background : {
+            title : "Background ability score improvements",
+            loc : "left",
+            txt : ""
+        }
+    };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
