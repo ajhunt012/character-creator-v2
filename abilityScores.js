@@ -282,6 +282,18 @@ if (tClass.improvements[imprLVL -1]) asiTxt.push(clHead + "\xD7" + tClass.improv
         sections.asi.txt = "Add 2 points to ability scores or add 1 point to two ability scores or take 1 feat:\n" + asiTxt.join(";n") + ".";
     }
 
+//create strings from CurrentStats objects
+    for(let sType in CurrentStats.txts) {
+        if (!sections[sType]) continue;
+        let tArr = [];
+        for (let sName in CurrentStats.txts[sType]){
+            tArr.push("\u2022 " + toUni(sName) + ": " +CurrentStats.txts[sType] [sName]);
+        }
+        if (tArr.length) {
+            tArr.sort();
+            sections[sType].txt = tArr.join(";\n") + ".";
+        }
+    }
 
 
 
