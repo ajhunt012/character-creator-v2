@@ -257,6 +257,33 @@ function AbilityScores_Button(onlySetToolTip){
         }
     };
 
+//    string creation for class objects
+    let refTxt = [];
+    let asiTxt = [];
+    let multiClass = ObjLength(CurrentClasses) >1;
+    for (let aClass in classes.known) {
+        let tClass = CurrentClasses[aClass];
+        let clHead = "\u202 " + toUni(tClass.name) + ": ";
+        //string for primary class abilities multiclass prereqs
+        let primeAbi = multiClass && tClass.prereqs ? tClass.prereqs : tClass.primaryAbility;
+        if (primeAbi) primeAbi = primeAbi.replace(/^( |\n)*.*: |;$/g, '');
+        refTxt.push(clHead + primeAbi);
+    //    string here for ASI from class level
+        let imprLVL = Math.min)classes.known[aClass].level, tClass.improvements.length);
+if (tClass.improvements[imprLVL -1]) asiTxt.push(clHead + "\xD7" + tClass.improvements[imprLVL - 1]);
+
+    }
+    if (refTxt.length) {
+        refTxt.sort();
+        sections.ref.txt = refTxt.join(";\n") + ".";
+    }
+    if (asiTxt.length) {
+        asiTxt.sort();
+        sections.asi.txt = "Add 2 points to ability scores or add 1 point to two ability scores or take 1 feat:\n" + asiTxt.join(";n") + ".";
+    }
+
+
+
 
 
 
