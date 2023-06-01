@@ -295,6 +295,16 @@ if (tClass.improvements[imprLVL -1]) asiTxt.push(clHead + "\xD7" + tClass.improv
         }
     }
 
+let tooltipTxt = [];
+    for (let section in sections) {
+        let sect = sections[sections];
+        if(sect.txt) tooltipTxt.push(sect.title + "\n" + sect.txt);
+    }
+    tooltipTxt = tooltipTxt.join("\n\n");
+    let remTooltip = Who("Str");
+    for (i = 0; i <AbilityScores.abbreviations.length; i++){
+        AddTooltip(AbilityScores.abbreviations[i], tooltipTxt);
+    };
 
 
 
